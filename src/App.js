@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { BrowserRouter } from 'react-router-dom'
+import RouterComponent from "components/RouterComponent";
+import {Loader} from "./components/Loader";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
-function App() {
+const AppContainer = styled.div`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 0 20px;
+`
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppContainer>
+          <BrowserRouter>
+              <ErrorBoundary>
+                <RouterComponent />
+              </ErrorBoundary>
+          </BrowserRouter>
+      </AppContainer>
     </div>
   );
 }
